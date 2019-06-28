@@ -10,13 +10,29 @@ class MyBot extends ActivityHandler {
         // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
         this.onMessage(async (context, next) => {
             // await context.sendActivity(`You said '${ context.activity.text }'`);
+            // await context.sendActivity('The WORLD is not ANYMORE the way it used to BE');
+            if (context.activity.text.toLowerCase().includes('moon')) {
+                await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
+            }
+            if (context.activity.text.toLowerCase().includes('hi carlosbot') || context.activity.text.toLowerCase().includes('hi @carlosbot')) {
+                await context.sendActivity('Wassa wassa wassa wassa wassa wassa WASSUP BITCONNECT');
+            }
             switch (context.activity.text) {
-            case '/btc':
-                let btcPrice = await axios.get('https://api.coinbase.com/v2/prices/spot?currency=USD');
+            case '/p btc':
+                let btcPrice = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot?currency=USD');
                 await context.sendActivity('BTC $' + btcPrice.data.data.amount);
+                break;
+            case '/p ltc':
+                let ltcPrice = await axios.get('https://api.coinbase.com/v2/prices/LTC-USD/spot?currency=USD');
+                await context.sendActivity('LTC $' + ltcPrice.data.data.amount);
+                break;
+            case '/p eth':
+                let ethPrice = await axios.get('https://api.coinbase.com/v2/prices/ETH-USD/spot?currency=USD');
+                await context.sendActivity('ETH $' + ethPrice.data.data.amount);
                 break;
             case '/bitconnect':
                 await context.sendActivity('https://youtu.be/e5nyQmaq4k4');
+                break;
             }
             // By calling next() you ensure that the next BotHandler is run.
             await next();
