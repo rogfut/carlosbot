@@ -51,6 +51,10 @@ class MyBot extends ActivityHandler {
             case '/bitconnect@BeetConnectBot':
                 await context.sendActivity('https://youtu.be/e5nyQmaq4k4');
                 break;
+            case '/rocket':
+            case '/rocket@BeetConnectBot':
+                await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
+                break;
             }
             // By calling next() you ensure that the next BotHandler is run.
             await next();
