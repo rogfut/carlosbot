@@ -18,31 +18,37 @@ class MyBot extends ActivityHandler {
             if (context.activity.text.toLowerCase().includes('moon')) {
                 await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
             }
-            if (context.activity.text.toLowerCase().includes('hi carlosbot') || context.activity.text.toLowerCase().includes('hi @carlosbot')) {
+            if (context.activity.text.toLowerCase().includes('hi carlosbot') || context.activity.text.toLowerCase().includes('hi @BeetConnectBot')) {
                 await context.sendActivity(emoji.get('wave') + ' Wassa wassa wassa wassa wassa wassa WASSUP BITCONNECT');
             }
             switch (context.activity.text) {
             case '/btc':
+            case '/btc@BeetConnectBot':
                 let btcPrice = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot?currency=USD');
                 await context.sendActivity('BTC $' + btcPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/ltc':
+            case '/ltc@BeetConnectBot':
                 let ltcPrice = await axios.get('https://api.coinbase.com/v2/prices/LTC-USD/spot?currency=USD');
                 await context.sendActivity('LTC $' + ltcPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/eth':
+            case '/eth@BeetConnectBot':
                 let ethPrice = await axios.get('https://api.coinbase.com/v2/prices/ETH-USD/spot?currency=USD');
                 await context.sendActivity('ETH $' + ethPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/xrp':
+            case '/xrp@BeetConnectBot':
                 let xrpPrice = await axios.get('https://api.coinbase.com/v2/prices/XRP-USD/spot?currency=USD');
                 await context.sendActivity('XRP $' + xrpPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/link':
+            case '/link@BeetConnectBot':
                 let linkPrice = await axios.get('https://api.coinbase.com/v2/prices/LINK-USD/spot?currency=USD');
                 await context.sendActivity('LINK $' + linkPrice.data.data.amount + ' ' + dollarEmoji);
                 break;    
             case '/bitconnect':
+            case '/bitconnect@BeetConnectBot':
                 await context.sendActivity('https://youtu.be/e5nyQmaq4k4');
                 break;
             }
