@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { ActivityHandler } = require('botbuilder');
+const { ActivityHandler, CardFactory } = require('botbuilder');
 const axios = require('axios');
 const emoji = require('node-emoji');
 
@@ -53,8 +53,18 @@ class MyBot extends ActivityHandler {
                 break;
             case '/rocket':
             case '/rocket@BeetConnectBot':
-                await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
-                break;
+                // await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
+                let card = CardFactory.animationCard(
+                    '',
+                    [
+                        { url: 'https://giant.gfycat.com/DeadlyVeneratedAmericangoldfinch.gif' }
+                    ],
+                    [],
+                    {
+                        subtitle: 'THE WORLD IS NO LONGER THE WAY THAT IT USED TO BE'
+                    }
+                );
+                await context.sendActivity({ attachments: [card] });
             }
             // By calling next() you ensure that the next BotHandler is run.
             await next();
