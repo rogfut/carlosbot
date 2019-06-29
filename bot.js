@@ -22,22 +22,26 @@ class MyBot extends ActivityHandler {
                 await context.sendActivity(emoji.get('wave') + ' Wassa wassa wassa wassa wassa wassa WASSUP BITCONNECT');
             }
             switch (context.activity.text) {
-            case '/p btc':
+            case '/btc':
                 let btcPrice = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot?currency=USD');
                 await context.sendActivity('BTC $' + btcPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
-            case '/p ltc':
+            case '/ltc':
                 let ltcPrice = await axios.get('https://api.coinbase.com/v2/prices/LTC-USD/spot?currency=USD');
                 await context.sendActivity('LTC $' + ltcPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
-            case '/p eth':
+            case '/eth':
                 let ethPrice = await axios.get('https://api.coinbase.com/v2/prices/ETH-USD/spot?currency=USD');
                 await context.sendActivity('ETH $' + ethPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
-            case '/p xrp':
+            case '/xrp':
                 let xrpPrice = await axios.get('https://api.coinbase.com/v2/prices/XRP-USD/spot?currency=USD');
                 await context.sendActivity('XRP $' + xrpPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
+            case '/link':
+                let linkPrice = await axios.get('https://api.coinbase.com/v2/prices/LINK-USD/spot?currency=USD');
+                await context.sendActivity('LINK $' + linkPrice.data.data.amount + ' ' + dollarEmoji);
+                break;    
             case '/bitconnect':
                 await context.sendActivity('https://youtu.be/e5nyQmaq4k4');
                 break;
