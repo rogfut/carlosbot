@@ -12,15 +12,23 @@ class MyBot extends ActivityHandler {
     constructor() {
         super();
         // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
+        // Helper functions for cards
+        function createAnimationCard(title, subtitle, url) {
+            return CardFactory.animationCard(
+                `${ title }`,
+                [
+                    { url: `${ url }` }
+                ],
+                [],
+                {
+                    subtitle: `${ subtitle }`
+                }
+            );
+        }
+
         this.onMessage(async (context, next) => {
             // await context.sendActivity(`You said '${ context.activity.text }'`);
             // await context.sendActivity('The WORLD is not ANYMORE the way it used to BE');
-            if (context.activity.text.toLowerCase().includes('moon')) {
-                await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
-            }
-            if (context.activity.text.toLowerCase().includes('hi carlosbot') || context.activity.text.toLowerCase().includes('hi @BeetConnectBot')) {
-                await context.sendActivity(emoji.get('wave') + ' Wassa wassa wassa wassa wassa wassa WASSUP BITCONNECT');
-            }
             switch (context.activity.text) {
             case '/btc':
             case '/btc@BeetConnectBot':
@@ -46,25 +54,39 @@ class MyBot extends ActivityHandler {
             case '/link@BeetConnectBot':
                 let linkPrice = await axios.get('https://api.coinbase.com/v2/prices/LINK-USD/spot?currency=USD');
                 await context.sendActivity('LINK $' + linkPrice.data.data.amount + ' ' + dollarEmoji);
-                break;    
+                break;
             case '/bitconnect':
             case '/bitconnect@BeetConnectBot':
                 await context.sendActivity('https://youtu.be/e5nyQmaq4k4');
                 break;
+            case '/moon':
+            case '/moon@BeetConnectBot':
+                await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
+                break;
+            case '/hi':
+            case '/hi@BeetConnectBot':
+                await context.sendActivity(emoji.get('wave') + ' Wassa wassa wassa wassa wassa wassa WASSUP BITCONNECT');
+                break;
             case '/rocket':
             case '/rocket@BeetConnectBot':
                 // await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
-                let card = CardFactory.animationCard(
-                    '',
-                    [
-                        { url: 'https://giant.gfycat.com/DeadlyVeneratedAmericangoldfinch.gif' }
-                    ],
-                    [],
-                    {
-                        subtitle: 'THE WORLD IS NO LONGER THE WAY THAT IT USED TO BE'
-                    }
+                // let card = CardFactory.animationCard(
+                //     '',
+                //     [
+                //         { url: 'https://giant.gfycat.com/DeadlyVeneratedAmericangoldfinch.gif' }
+                //     ],
+                //     [],
+                //     {
+                //         subtitle: 'THE WORLD IS NO LONGER THE WAY THAT IT USED TO BE'
+                //     }
+                // );
+                let rocketCard = createAnimationCard(
+                    'test',
+                    'https://giant.gfycat.com/DeadlyVeneratedAmericangoldfinch.gif',
+                    'THE WORLD IS NO LONGER THE WAY THAT IT USED TO BE'
                 );
-                await context.sendActivity({ attachments: [card] });
+                await context.sendActivity({ attachments: [rocketCard] });
+                break;
             }
             // By calling next() you ensure that the next BotHandler is run.
             await next();
