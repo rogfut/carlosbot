@@ -33,39 +33,40 @@ class MyBot extends ActivityHandler {
             case '/btc':
             case '/btc@BeetConnectBot':
                 let btcPrice = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot?currency=USD');
-                await context.sendActivity('BTC $' + btcPrice.data.data.amount + ' ' + dollarEmoji);
+                context.sendActivity('BTC $' + btcPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/ltc':
             case '/ltc@BeetConnectBot':
                 let ltcPrice = await axios.get('https://api.coinbase.com/v2/prices/LTC-USD/spot?currency=USD');
+                // await context.sendActivity('LTC $' + ltcPrice.data.data.amount + ' ' + dollarEmoji);
                 await context.sendActivity('LTC $' + ltcPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/eth':
             case '/eth@BeetConnectBot':
                 let ethPrice = await axios.get('https://api.coinbase.com/v2/prices/ETH-USD/spot?currency=USD');
-                await context.sendActivity('ETH $' + ethPrice.data.data.amount + ' ' + dollarEmoji);
+                context.sendActivity('ETH $' + ethPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/xrp':
             case '/xrp@BeetConnectBot':
                 let xrpPrice = await axios.get('https://api.coinbase.com/v2/prices/XRP-USD/spot?currency=USD');
-                await context.sendActivity('XRP $' + xrpPrice.data.data.amount + ' ' + dollarEmoji);
+                context.sendActivity('XRP $' + xrpPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/link':
             case '/link@BeetConnectBot':
                 let linkPrice = await axios.get('https://api.coinbase.com/v2/prices/LINK-USD/spot?currency=USD');
-                await context.sendActivity('LINK $' + linkPrice.data.data.amount + ' ' + dollarEmoji);
+                context.sendActivity('LINK $' + linkPrice.data.data.amount + ' ' + dollarEmoji);
                 break;
             case '/bitconnect':
             case '/bitconnect@BeetConnectBot':
-                await context.sendActivity('https://youtu.be/e5nyQmaq4k4');
+                context.sendActivity('https://youtu.be/e5nyQmaq4k4');
                 break;
             case '/moon':
             case '/moon@BeetConnectBot':
-                await context.sendActivity('https://gfycat.com/agiletastyindianjackal');
+                context.sendActivity('https://gfycat.com/agiletastyindianjackal');
                 break;
             case '/hi':
             case '/hi@BeetConnectBot':
-                await context.sendActivity(emoji.get('wave') + ' Wassa wassa wassa wassa wassa wassa WASSUP BITCONNECT');
+                context.sendActivity(emoji.get('wave') + ' Wassa wassa wassa wassa wassa wassa WASSUP BITCONNECT');
                 break;
             case '/rocket':
             case '/rocket@BeetConnectBot':
@@ -85,7 +86,7 @@ class MyBot extends ActivityHandler {
                 //     'https://giant.gfycat.com/DeadlyVeneratedAmericangoldfinch.gif',
                 //     'THE WORLD IS NO LONGER THE WAY THAT IT USED TO BE'
                 // );
-                await context.sendActivity({ attachments: [rocketCard] });
+                context.sendActivity({ attachments: [rocketCard] });
                 break;
             }
             // By calling next() you ensure that the next BotHandler is run.
