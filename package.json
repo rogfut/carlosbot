@@ -22,7 +22,7 @@
         "fetch": "^1.1.0",
         "node-emoji": "^1.10.0",
         "restify": "~8.2.0",
-        "lodash": ">=4.17.13"
+        "lodash": ">=4.17.19"
     },
     "devDependencies": {
         "eslint": "^5.13.0",
